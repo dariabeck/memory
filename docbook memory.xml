@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?xml-model href="http://docbook.org/xml/5.0/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://docbook.org/xml/5.0/rng/docbook.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<article xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+    <info>
+        <title> Project - Memory Spiel </title>
+        <author> <orgname> Stefan Klöß-Schuster </orgname> </author>
+        <author> <orgname> Vanessa Krohn </orgname> </author>
+        <author> <orgname> Ilias Sulgin </orgname> </author>
+        <author> <orgname> Alexander Ruhl </orgname> </author>
+        <author> <orgname> Daria Beck </orgname> </author>
+        
+    </info>
+    <sect1>
+        <title> Benutzeroberfläche</title>
+        <para>Benutzeroberfläche des Memoryspiels stellt ein Browserspiel dar. </para>
+         
+              <orderedlist>
+                  <listitem>
+                      <para>Ein User kann mit dem Spiel anfangen, indem er auf "Lounge"-Button
+                    klickt. Nach dem Klicken auf das "Lounge"-Button wird der User in ein weiteres
+                    Fenster weitergeleitet, wo er unterschiedliche Optionen zur Auswahl zur
+                    Verfügung hat. Diese Optionen sind: Neues Spiel anfangen, das vorherige Spiel
+                    laden, Highscore anschauen und Registrieren. </para>
+                  </listitem>
+                  
+                  <listitem>
+                      <para> Wenn der User auf die Option "New Game" klickt, wird er aufgefordert in das Feld, seinen Namen einzugeben. 
+                          Weiterhin muss er entscheiden, mit welcher Anzahl
+                          der Karten (12,20,28) er spielen möchte. Optional kann der User weitere Spieler zum Memory-Spiel einladen. 
+                          Nach dem Klicken des "Start"-Buttons fängt ein neues Spiel an.
+                          Neben der "New Game" Option kann der User sein vorhin gespeichertes Spiel fortsetzen, indem er seinen Namen ins Feld eingibt und das Spiel wählt.
+                          Der User kann sich für das Spiel registriern lassen.</para>
+                  </listitem>
+                  <listitem>
+                      <para>Nachdem der User das neue Spiel begonnen hat, bekommt er das Spielfeld im neuen Fenster zu sehen, 
+                          wo er 2 Paare von Karten entdecken muss, indem er auf beliebge Karten kickt. 
+                          Der User, der mehrere Paare von Karten entdeckt, wird als "Gewonnen" gekennzeichnet. Der andere User wird als "Verloren" gekennzeichnet. Nach dem Spiel kann der User seine Highscores anschauen. </para>
+                  </listitem>
+                  <listitem>
+                      <para>Im Spielfeldfenster kann der User das Spiel speichern, das Spiel verwerfen, ins "Lounge" zurückgehen und 
+                          das neue Spiel anfangen. Im "Lounge" kann der User seine und die Highscores anderer Speiler anschauen. </para>
+                  </listitem>
+              </orderedlist> 
+        
+       
+    </sect1>
+    <sect1> 
+        <title>UML-Klassendiagramm</title>
+        <para> Die benötigten Zustandsdaten sind im UML-Klassendiagramm dargestellt.</para>
+        <mediaobject> 
+            <imageobject>
+                <imagedata fileref="UML_Memory.png" format="png"/>      
+            </imageobject>
+        </mediaobject>     
+    </sect1>
+    
+    <sect1>
+        <title>Klassen</title>
+        <para>
+            The following list explains the classes shown in the class diagram.
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        <emphasis>Spieler</emphasis>:
+                        Die Spielerklasse repräsentiert einen von zwei Spielern. 
+                        Es hat eine ID und ein Username, um sich zwischen den Spielern zu unterscheiden. Jeder Spieler hat einen Integer "anzahlGewonneneKarten", 
+                        der die Anzahl der gewonnenen Spiele enthält. 
+                        Dabei erhöht die Methode die Anzahl gewonnener Karten nach einem gewonnenen Spiel und setzt die Anzahl gewonnener Karten zurück,
+                        wenn die Spielesession zu Ende ist.
+                    </para>
+                </listitem>
+                <listitem> 
+                <para> 
+                    <emphasis>Karten</emphasis>:
+                    Karten werden in Paaren dargestellt. Jede Karte erhält eine ID und eine Zwillingkarte. Die Klasse enthält die boolean-Methoden "aufgedeckt" und "gelöst". Diese Methoden zeigen den Zustand der Karten, ob sie aufgedeckt sind und ob 2 gleiche Karten gefunden wurden.
+                </para>
+                </listitem>
+                       
+                <listitem>
+                    <para>
+                        <emphasis>Spielfeld</emphasis>:
+                        Der Spielfeld representiert die Anzahl der Karten, die momentan im Spiel sind.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis>Memory</emphasis>:
+                        Memory ist der oberste Controller der Spielinstanz. 
+                        Dazu gehören das Spielfeld und die Spieler-Klasse. 
+                        Die Klasse indentifiziert, welche Spieler im Einsatz sind und die Anzahl der Spieler. 
+                        Außerdem identifiziert die Klasse, ob das Spiel beendet ist, und welcher Spieler das Spiel gewonnen hat.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </sect1>
+    
+    <sect1>
+        <title>Use Cases</title>
+        <para>
+            Memory Spiel kann in folgende Anwendungsfälle aufgeteilt werden:
+            <itemizedlist>
+                <listitem>
+                    <para> Um ein neues Spiel beginnen zu können, muss der Spieler zunächst ein
+                        "Lounge"-Button klicken </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann ein neues Spiel beginnen
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann das Spiel fortsetzen
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann das Spiel gewinnen und kann die Möglichkeit haben, Highscores anderer Spieler anzuschauen
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann sich im System registrieren 
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler hat die Möglichkeit, seinen Namen im Feld einzugeben 
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann Optionen wählen, mit 12, 20 oder 28 Karten zu spielen
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann weitere Player einladen
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler hat die Möglichkeit zum "Lounge" zurückzugehen
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann sein Spiel verwerfen und ein neues Speil starten
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Spieler kann sein Spiel speichern
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="Unbenanntes%20Dokument-2.png"  format="png"/>
+            </imageobject>
+        </mediaobject>
+    </sect1>
+    
+    <sect1> 
+        <title>Thematik und Organisation der Arbeit</title>
+        
+        <para> </para>
+        
+        <sect2> 
+        <title>Thematik der Arbeit - Munich-Memory</title>
+            <para> </para>
+        </sect2>
+        
+        <sect2> 
+            <title>Organisation der Arbeit</title>
+            <para> </para>
+        </sect2>
+        
+        
+    </sect1>
+    
+   
+       
+     
+</article>
